@@ -1,0 +1,44 @@
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+>
+    <head>
+        <meta charset='utf-8'/>
+		<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <title>My Rockin' Page</title>
+        <link rel='import' href='brb-component.html'/>
+    </head>
+    <body style='background: #fff'>
+        <h1>My Rockin' Page</h1>
+        <p>I am so hot I spontaneously unbreak symmetry.</p>
+		<big-red-button size="100" id='attr'>Attr</big-red-button>
+		<big-red-button size="200" id='brb'>Push Me!</big-red-button>
+		<script><![CDATA[
+
+		    var step = 10
+		        , brb = document.getElementById("brb")
+		        , running = false
+		        ;
+		    function animate() {
+		        brb.size += step;
+		        if (brb.size >= 300 || brb.size < 200)
+		            step = -step;
+		        if (running)
+		            requestAnimationFrame(animate);
+		    }
+		    brb.onclick = function() {
+		        if (running)
+		            running = false;
+		        else {
+		            running = true;
+		            requestAnimationFrame(animate);
+		        }
+		    };
+		    document.getElementById("attr").onclick = function() {
+		        brb.setAttribute("size", brb.size === 200 ? "500" : "200");
+		    };
+		]]>
+		</script>
+	</body>
+</html>
+

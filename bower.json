@@ -1,0 +1,19 @@
+{
+  "name": "webcomponents",
+  "version": "0.0.0",
+  "authors": [
+    "Henri Manson <hfmanson@gmail.com>"
+  ],
+  "description": "polyfills for webcomponents",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "~0.7.12"
+  }
+}

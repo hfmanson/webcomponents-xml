@@ -1,0 +1,55 @@
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ce="http://mansoft.nl/custom-element"
+>
+    <head>
+        <meta charset='utf-8'/>
+		<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <title>My Rockin' Page</title>
+        <link rel='import' href='brb-component.html'/>
+    </head>
+    <body style='background: #fff'>
+        <h1>My Rockin' Page</h1>
+        <p>I am so hot I spontaneously unbreak symmetry.</p>
+		<ce:big-red-button size="100" id='attr'>Attr</ce:big-red-button>
+		<ce:big-red-button size="200" id='brb'>Push Me!</ce:big-red-button>
+		<script><![CDATA[
+			window.addEventListener("load", function () {
+				var   attr = document.getElementById("attr")
+					, brb = document.getElementById("brb")
+			        , running = false
+					, step = 10
+					;
+
+				console.log("load");
+				console.log(attr);
+				console.log(brb);
+				attr.addEventListener("click", function (e) {
+					console.log(e);
+					brb.setAttribute("size", brb.size === 200 ? "500" : "200")
+				});
+				brb.addEventListener("click", function (e) {
+				    var
+						animate = function () {
+							brb.size += step;
+							if (brb.size >= 300 || brb.size < 200)
+								step = -step;
+							if (running)
+								requestAnimationFrame(animate);
+						}
+						;
+
+					console.log(e);
+				    if (running)
+				        running = false;
+				    else {
+				        running = true;
+				        requestAnimationFrame(animate);
+				    }
+				});
+			});
+		]]>
+		</script>
+	</body>
+</html>
+
